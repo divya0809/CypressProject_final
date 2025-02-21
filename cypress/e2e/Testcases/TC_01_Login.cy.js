@@ -1,14 +1,10 @@
 /// <reference types="cypress"/>
 import 'cypress-xpath';
-import Login from "../PageObject/Loginpage.js";
+import Login from "../Page Object/POM_01_Loginpage.js";
  
 describe("Login page", () => {
   it("should log in using credentials from config", () => {
-   
-
     const login = new Login(); 
-    
-  
     cy.visit("http\://10.1.0.83/\#/") // Visit login page
       cy.viewport(1920, 1080) // Full HD resolution
       .then(() => {

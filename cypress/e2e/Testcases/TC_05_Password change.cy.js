@@ -77,22 +77,18 @@ it("should log in using credentials from config and change password", () => {
 
 */
 
-/// <reference types="cypress"/>
+// <reference types="cypress"/>
 import 'cypress-xpath';
-import Common from "../Common"; 
-import newpassword from "../PageObject/changepassword.js";
+import Common from "../Common.js"; 
+import newpassword from "../Page Object/POM_05_Passwordchange.js"; // Ensure correct case
 
 Cypress.on('uncaught:exception', (err, runnable) => {
-  // Ignore backdrop-related errors
   if (err.message.includes("Cannot read properties of undefined (reading 'backdrop')")) {
       return false; 
   }
 });
 
 it("should log in using credentials from config and change password", () => {
-    cy.visit("http://10.1.0.83/#/login"); // Base URL from env config
-    cy.viewport(1920, 1080);
-
     const com = new Common();
     com.loginProcess();
     cy.wait(3000);
@@ -107,19 +103,10 @@ it("should log in using credentials from config and change password", () => {
     // Generate and set a new password
     newpassword.setNewPassword();
 
-    // Retrieve and update config with the new password
-    cy.get('@lastGeneratedPassword').then((newPassword) => {
-        cy.log('New Password:', newPassword);
-
-        
-        cy.task('updateConfig', { path: 'cypress.config.js', newPassword }).then(() => {
-            cy.log('Password updated in Cypress config');
-        });
-    });
-
     // Confirm password change
     cy.get('.mb-1').click({ force: true });
     cy.url().should('include', '/login');
-
-  
 });
+
+
+

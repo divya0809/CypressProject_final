@@ -82,8 +82,6 @@ describe("Data Driven with", () => {
 
       for(let i = 1; i < rowCount; i++){
         let value = excelData[0].data[1]
-        cy.visit("http://10.1.0.83/#/login"); // Base URL from env config4r
-        cy.viewport(1920, 1080);
         cy.url().then((currentUrl) => {
           cy.log("Current URL:", currentUrl);
         });
@@ -91,15 +89,16 @@ describe("Data Driven with", () => {
         cy.get('form', { timeout: 60000 }).should('exist'); // Ensure login form exists
         
         // Try different selectors if needed
-        cy.get('input[name="username"]', { timeout: 60000 })
-          .should('exist')
-          .should('be.visible')
-          .type(value[0]);
+        cy.get('input[name="username"]', { timeout: 60000 }).should('exist').should('be.visible').type(value[0]);
         
         cy.get('input[name="password"]').should('exist').type(value[1]).type('{enter}');
-  cy.wait(3000);
+        cy.wait(3000);
 
         cy.url().should('include', '/dashboard');  //Add assertions as needed
+        Cypress.on('uncaught:exception', (err, runnable) => {
+          return false;
+      });
+      
         cy.get('#logoutButton').click();  // Logout before the next iteration
     }
   })

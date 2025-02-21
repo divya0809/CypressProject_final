@@ -1,17 +1,12 @@
-import 'cypress-xpath';
+/*import 'cypress-xpath';
 import Common from "../Common"; 
 it('Construct monitor', () => {
-  cy.visit("http://10.1.0.83/#/login"); // Base URL from env config
-  cy.viewport(1920, 1080);
-
   const com = new Common();
   com.loginProcess();
-      
-      cy.wait(3000);
+  cy.wait(3000);
+  //validation of the login page....
 
-      //validation of the login page....
-
-      cy.get('.col-md-6 > .mb-3').should("contain.text", "Neilsoft - Active Construction Sites");
+    cy.get('.col-md-6 > .mb-3').should("contain.text", "Neilsoft - Active Construction Sites");
 
     cy.get('#dropdownMenuButton1 > img').click()
  
@@ -24,3 +19,38 @@ it('Construct monitor', () => {
   cy.get('.col-md-6 > .mb-3').should("contain.text", "Neilsoft - Active Construction Sites");
 
 })
+*/
+
+// cypress/e2e/your_test_file.js
+
+import 'cypress-xpath';
+import Common from '../Common';
+import Languagechange from '../Page Object/POM_04_Languagechange.js';
+
+describe('Construct Monitor', () => {
+    it('should validate the active sites header and change the language', () => {
+        const com = new Common();
+        const languageChange = new Languagechange(); // Create an instance of Languagechange
+
+        com.loginProcess();
+        cy.wait(3000);
+
+        // Validate the active sites header
+        languageChange.validateActiveSitesHeader();
+
+        // Open the language dropdown
+        languageChange.clickLanguageDropdown();
+
+        // Wait for the dropdown to open
+        cy.wait(1000);
+
+        // Select 'English' from the dropdown
+        languageChange.selectLanguage('English');
+
+        // Wait for the page to reload or update
+        cy.wait(3000);
+
+        // Validate the active sites header again to ensure language change
+        languageChange.validateActiveSitesHeader();
+    });
+});

@@ -1,16 +1,17 @@
-import 'cypress-xpath';
-import Common from "../Common"; 
-it('Construct monitor', () => {
-  cy.visit("http://10.1.0.83/#/login"); // Base URL from env config
-  cy.viewport(1920, 1080);
+import Common from '../Common';
+import MonitorPage from '../Page Object/POM_03_About.js'; 
 
-  const com = new Common();
-  com.loginProcess();
-      
-      cy.wait(3000);
+describe('Construct Monitor', () => {
+    it('should validate the active sites header and navigate to the about page', () => {
+        const com = new Common();
 
-      //validation of the login page....
+        com.loginProcess();
+        cy.wait(3000);
 
-      cy.get('.col-md-6 > .mb-3').should("contain.text", "Neilsoft - Active Construction Sites");
-      
-    cy.get('.aboutpage > img').click()})
+        // Validate the active sites header
+        MonitorPage.validateActiveSitesHeader();
+
+        // Navigate to the about page
+        MonitorPage.clickAboutPageImage();
+    });
+});

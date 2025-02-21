@@ -3,65 +3,54 @@ const path = require('path');
 const xlsx = require('node-xlsx');
 const { defineConfig } = require("cypress");
 
-module.exports = defineConfig({
+module.exports = {
   e2e: {
-    baseUrl: "http://10.1.0.83/#/",
     watchForFileChanges: false,
     video: true, // Enable video recording
     screenshot: true, // Enable screenshots on test failure
-    defaultCommandTimeout: 120000,  // Increase timeout to 120 sec
+    defaultCommandTimeout: 120000, // Increase timeout to 120 sec
     taskTimeout: 120000,
 
     setupNodeEvents(on, config) {
-      require('cypress-mochawesome-reporter/plugin')(on);
-
       on('task', {
-        updateConfig({ path, newPassword }) {
-          if (!fs.existsSync(path)) {
-            return null;
+        updateConfig({ newPassword }) {
+          try {
+            const configPath = path.resolve(__dirname, 'cypress.config.js'); // Ensure correct path
+            let configData = {};
+
+            if (fs.existsSync(configPath)) {
+              configData = require(configPath); // Read existing config
+            }
+
+            // Update the password in Cypress environment variables
+            configData.env.password = newPassword;
+
+            // Write the updated config back to the file
+            fs.writeFileSync(configPath, JSON.stringify(configData, null, 2));
+            return `Password updated successfully!`;
+          } catch (error) {
+            return `Error updating password: ${error.message}`;
           }
-
-          let configFile = fs.readFileSync(path, 'utf-8');
-
-          // Replace old password with the new one
-          configFile = configFile.replace(/password: ".*?"/, `password: "${newPassword}"`);
-
-          fs.writeFileSync(path, configFile, 'utf-8');
-          return null;
-        },
-        
-        parseXlsx({ filepath }) {
-          if (!filepath) {
-            throw new Error("File path is undefined! Check if the correct path is passed.");
-          }
-
-          const absolutePath = path.resolve(filepath); // Ensures absolute path resolution
-
-          if (!fs.existsSync(absolutePath)) {
-            throw new Error(`File not found: ${absolutePath}`);
-          }
-
-          const xlData = xlsx.parse(fs.readFileSync(absolutePath)); 
-          return xlData;
         }
       });
 
       return config;
-    },
+    }
   },
 
   env: {
-    email: "akash.gunjegaon@neilsoft.com",
-    password: "Saurabh@2",
+    baseUrl: "http://10.1.0.83/#/",
+    email: "divya.chaudhari@neilsoft.com",
+    password: "A4rE$UD&MDge",
     OTP: "123459",
   },
 
   reporter: 'cypress-mochawesome-reporter',
   reporterOptions: {
-    reportDir: 'cypress/reports/mochawesome',
+    reportDir: 'cypress/reports',
     overwrite: false,
     html: false,
     json: true,
     timestamp: 'mmddyyyy_HHMMss'
   }
-});
+};

@@ -24,14 +24,11 @@ it('Construct monitor', () => {
      */
 
 import 'cypress-xpath';
-import ProjectPage from "../PageObject/Addproject.js";
+import ProjectPage from "../PageObject/POM_06_Addproject.js";
 import Common from "../Common"; 
 
 describe('Add Project Test', () => {
     beforeEach(() => {
-        cy.visit("http://10.1.0.83/#/login"); // Visit the correct app URL
-        cy.viewport(1920, 1080);
-
         const com = new Common();
         com.loginProcess(); // Assuming login is required
 

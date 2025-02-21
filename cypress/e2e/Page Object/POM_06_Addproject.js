@@ -1,6 +1,4 @@
 class ProjectPage {
-
-    
     static generateUniqueProjectName() {
         return cy.get('.card-title.mt-4').then(($projects) => {
             let existingProjects = $projects.map((index, el) => Cypress.$(el).text().trim()).get();
@@ -39,8 +37,6 @@ class ProjectPage {
         
     }
 
-    
-
     static setBuildupArea() {
         const buildupAreaValue = "50000";
         cy.xpath("//input[@id='buildupArea']").clear().type(buildupAreaValue);
@@ -51,8 +47,6 @@ class ProjectPage {
     }
 
     static validateProjectName(generatedName) {
-
-        
         cy.get('.col-md-6 > h3')
         .invoke('text')
         .should('contain', generatedName);

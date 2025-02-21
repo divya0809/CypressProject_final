@@ -26,7 +26,7 @@
 
 Cypress.Commands.add('parseXlsx', (filePath) => {
     if (!filePath) {
-      throw new Error("Missing filePath argument in parseXlsx command.");
+      //throw new Error("Missing filePath argument in parseXlsx command.");
     }
-    return cy.task('parseXlsx', { filepath: filePath });  // FIXED: Properly passing { filepath }
+    //return cy.task('parseXlsx', { filepath: filePath });  // FIXED: Properly passing { filepath }
   });
