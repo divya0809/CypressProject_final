@@ -11,7 +11,7 @@ describe("Logout Test Case", () => {
         });
         
         logoutPage.clickLogoutButton();
-       logoutPage.confirmLogout();
+        logoutPage.confirmLogout();
         cy.wait(3000);
         //logoutPage.verifyLogoutSuccess();
     });

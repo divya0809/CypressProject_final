@@ -1,7 +1,7 @@
 class LogoutPage {
     constructor() {
         this.logoutButton = '.power > img';
-       this.confirmLogoutButton = "//button[normalize-space()='Yes']";
+        this.confirmLogoutButton = "//button[normalize-space()='Yes']";
     }
 
     clickLogoutButton() {
