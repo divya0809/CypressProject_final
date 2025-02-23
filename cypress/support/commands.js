@@ -31,7 +31,11 @@ Cypress.Commands.add('parseXlsx', (filePath) => {
     //return cy.task('parseXlsx', { filepath: filePath });  // FIXED: Properly passing { filepath }
   });
 
-  Cypress.Commands.add('readExcelFile', (filePath) => {
-    return cy.task('readExcelFile', filePath);
-  });  
+/*Cypress.Commands.add('readExcelFile', (filePath) => {
+  return cy.task('readExcelFile', filePath);
+});  
 
+*/
+Cypress.Commands.add("readExcelFile", (filePath) => {
+  return cy.task("readExcelFile", { filePath });
+});

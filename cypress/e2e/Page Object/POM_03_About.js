@@ -1,5 +1,3 @@
-// cypress/pageObjects/MonitorPage.js
-
 class MonitorPage {
     // Static getters for selectors
     static get activeSitesHeader() {

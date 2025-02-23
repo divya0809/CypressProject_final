@@ -1,0 +1,10 @@
+{
+  "suites": 1,
+  "tests": 1,
+  "passes": 1,
+  "pending": 0,
+  "failures": 0,
+  "start": "2025-02-23T09:00:45.458Z",
+  "duration": 17741,
+  "file": "cypress\\e2e\\Testcases\\TC_07_Add building.cy.js"
+}

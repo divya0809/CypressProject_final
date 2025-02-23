@@ -1,0 +1,12 @@
+Action	Command :
+Check status	git status
+Stage files	git add .
+Commit changes	git commit -m "Your message"
+Pull latest changes	git pull origin main --rebase
+Push changes	git push origin main
+
+
+To run all test in browser :  npx cypress run --browser chrome --headed --spec "cypress\e2e\Testcase\*.cy.js"
+ 
+ 
+To run parallel test : npm run cy:parallel

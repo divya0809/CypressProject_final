@@ -1,0 +1,10 @@
+{
+  "suites": 1,
+  "tests": 1,
+  "passes": 1,
+  "pending": 0,
+  "failures": 0,
+  "start": "2025-02-23T09:00:29.592Z",
+  "duration": 13316,
+  "file": "cypress\\e2e\\Testcases\\TC_02_Logout.cy.js"
+}
