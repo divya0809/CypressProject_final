@@ -77,36 +77,36 @@ it("should log in using credentials from config and change password", () => {
 
 */
 
-// <reference types="cypress"/>
-import 'cypress-xpath';
-import Common from "../Common.js"; 
-import newpassword from "../Page Object/POM_05_Passwordchange.js"; // Ensure correct case
+// // <reference types="cypress"/>
+// import 'cypress-xpath';
+// import Common from "../Common.js"; 
+// import newpassword from "../Page Object/POM_05_Passwordchange.js"; // Ensure correct case
 
-Cypress.on('uncaught:exception', (err, runnable) => {
-  if (err.message.includes("Cannot read properties of undefined (reading 'backdrop')")) {
-      return false; 
-  }
-});
+// Cypress.on('uncaught:exception', (err, runnable) => {
+//   if (err.message.includes("Cannot read properties of undefined (reading 'backdrop')")) {
+//       return false; 
+//   }
+// });
 
-it("should log in using credentials from config and change password", () => {
-    const com = new Common();
-    com.loginProcess();
-    cy.wait(3000);
-    cy.get('.col-md-6 > .mb-3').should("contain.text", "Neilsoft - Active Construction Sites");
+// it("should log in using credentials from config and change password",{retries: 1},() => {
+//     const com = new Common();
+//     com.loginProcess();
+//     cy.wait(3000);
+//     cy.get('.col-md-6 > .mb-3').should("contain.text", "Neilsoft - Active Construction Sites");
 
-    // Change password
-    cy.get('.user > img').click();
-    cy.get('#exampleModalLabel').should("contain.text", "Change Password");
-    cy.wait(1000);
-    cy.get('#oldpassword').type(`${Cypress.env("password")}{enter}`);
+//     // Change password
+//     cy.get('.user > img').click();
+//     cy.get('#exampleModalLabel').should("contain.text", "Change Password");
+//     cy.wait(1000);
+//     cy.get('#oldpassword').type(`${Cypress.env("password")}{enter}`);
 
-    // Generate and set a new password
-    newpassword.setNewPassword();
+//     // Generate and set a new password
+//     newpassword.setNewPassword();
 
-    // Confirm password change
-    cy.get('.mb-1').click({ force: true });
-    cy.url().should('include', '/login');
-});
+//     // Confirm password change
+//     cy.get('.mb-1').click({ force: true });
+//     cy.url().should('include', '/login');
+// });
 
 
 

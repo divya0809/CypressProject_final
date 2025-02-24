@@ -24,18 +24,6 @@
 // -- This will overwrite an existing command --
 // Cypress.Commands.overwrite('visit', (originalFn, url, options) => { ... })
 
-Cypress.Commands.add('parseXlsx', (filePath) => {
-    if (!filePath) {
-      //throw new Error("Missing filePath argument in parseXlsx command.");
-    }
-    //return cy.task('parseXlsx', { filepath: filePath });  // FIXED: Properly passing { filepath }
-  });
-
-/*Cypress.Commands.add('readExcelFile', (filePath) => {
-  return cy.task('readExcelFile', filePath);
-});  
-
-*/
 Cypress.Commands.add("readExcelFile", (filePath) => {
   return cy.task("readExcelFile", { filePath });
 });

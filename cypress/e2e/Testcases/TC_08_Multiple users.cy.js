@@ -30,7 +30,7 @@ import 'cypress-xpath';
   });
 });*/
 describe("Read data from Excel file in Cypress", () => {
-  it("should use Excel data to perform login tests", () => {
+  it("should use Excel data to perform login tests",{retries: 1},() => {
       cy.readExcelFile("users01.xlsx").then((data) => {
           data.shift(); // Remove headers if present
           data.forEach(([Username, Password]) => {

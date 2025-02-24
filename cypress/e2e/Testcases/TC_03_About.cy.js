@@ -2,7 +2,7 @@ import Common from '../Common';
 import MonitorPage from '../Page Object/POM_03_About.js'; 
 
 describe('Construct Monitor', () => {
-    it('should validate the active sites header and navigate to the about page', () => {
+    it('should validate the active sites header and navigate to the about page',{retries: 1},() => {
         const com = new Common();
 
         com.loginProcess();

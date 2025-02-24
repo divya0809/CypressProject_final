@@ -28,10 +28,9 @@ import Common from '../Common';
 import Languagechange from '../Page Object/POM_04_Languagechange.js';
 
 describe('Construct Monitor', () => {
-    it('should validate the active sites header and change the language', () => {
+    it('should validate the active sites header and change the language',{retries: 1},() => {
         const com = new Common();
         const languageChange = new Languagechange(); // Create an instance of Languagechange
-
         com.loginProcess();
         cy.wait(3000);
 

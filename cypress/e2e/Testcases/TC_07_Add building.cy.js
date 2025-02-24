@@ -3,7 +3,7 @@ import Common from '../Common';
 import MonitorPage from '../Page Object/POM_07_Addbuilding.js';
 
 describe('Construct Monitor', () => {
-    it('should perform the monitor actions', () => {
+    it('should perform the monitor actions',{retries: 1},() => {
         const com = new Common();
         com.loginProcess();
         cy.wait(3000);

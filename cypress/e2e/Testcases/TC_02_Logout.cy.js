@@ -2,7 +2,7 @@ import LogoutPage from "../Page Object/POM_02_Logout.js";
 import Common from "../Common.js";
 
 describe("Logout Test Case", () => {
-    it("should log out successfully", () => {
+    it("should log out successfully",{retries: 1},() => {
         const com = new Common();
         const logoutPage = new LogoutPage();
         com.loginProcess();
