@@ -10,3 +10,202 @@ To run all test in browser :  npx cypress run --browser chrome --headed --spec "
  
  
 To run parallel test : npm run cy:parallel
+
+  
+      
+	  
+	  
+	  
+	  Update password 
+	  
+	  
+	  
+	  config.js ----> 
+	   // on('task', {
+      //   updateConfig({ newPassword }) {
+      //     try {
+      //       const configPath = path.resolve(__dirname, 'cypress.config.js'); // Ensure correct path
+      //       let configData = {};
+
+      //       if (fs.existsSync(configPath)) {
+      //         configData = require(configPath); // Read existing config
+      //       }
+
+      //       // Update the password in Cypress environment variables
+      //       configData.env.password = newPassword;
+
+      //       // Write the updated config back to the file
+      //       fs.writeFileSync(configPath, JSON.stringify(configData, null, 2));
+      //       return `Password updated successfully!`;
+      //     } catch (error) {
+      //       return `Error updating password: ${error.message}`;
+      //     }
+      //   }
+      // });
+      // on('task', {
+      //   readExcelFile(filePath) {
+      //     const absolutePath = path.resolve(__dirname, 'cypress/fixtures', filePath);
+      //     const workbook = xlsx.readFile(absolutePath);
+      //     const sheetName = workbook.SheetNames[0];
+      // //     const worksheet = workbook.Sheets[sheetName];
+      // //     const data = xlsx.utils.sheet_to_json(worksheet);
+      // //     return data;
+        
+      // //   },
+      //   parseXlsx({ filepath }) {
+      //     if (!filepath) {
+      //       throw new Error("File path is undefined! Check if the correct path is passed.");
+      //     }
+
+      //     const absolutePath = path.resolve(filepath); // Ensures absolute path resolution
+
+      //     if (!fs.existsSync(absolutePath)) {
+      //       throw new Error(`File not found: ${absolutePath}`);
+      //     }
+
+      //     const xlData = xlsx.parse(fs.readFileSync(absolutePath)); 
+      //     return xlData;
+      // }
+    //})
+	
+	
+	
+	
+	
+  */
+/*
+/// <reference types="cypress"/>
+import 'cypress-xpath';
+import Common from "../Common"; 
+import newpassword from "../PageObject/changepassword.js";
+
+it("should log in using credentials from config and change password", () => {
+    cy.visit("http://10.1.0.83/#/login"); // Base URL from env config
+    cy.viewport(1920, 1080);
+
+    const com = new Common();
+    com.loginProcess();
+    cy.wait(3000);
+    cy.get('.col-md-6 > .mb-3').should("contain.text", "Neilsoft - Active Construction Sites");
+
+    // Change password
+    cy.get('.user > img').click();
+    cy.get('#exampleModalLabel').should("contain.text", "Change Password");
+    cy.get('#oldpassword').type(`${Cypress.env("password")}{Enter}`);
+
+    newpassword.setNewPassword(); // Generates a new password and types it
+
+    cy.get('@lastGeneratedPassword').then((newPassword) => {
+        cy.log('New Password:', newPassword);
+
+        
+        cy.task('updateConfig', { newPassword }).then(() => {
+            cy.log('Password updated in Cypress config');
+        });
+    });
+
+    cy.get('@lastGeneratedPassword').then((newPassword) => {
+      cy.log('Regenerated Password:', newPassword);
+
+      
+      cy.task('updateConfig', { newPassword }).then(() => {
+          cy.log('Re generated Password updated in Cypress config');
+      });
+  });
+    
+
+    cy.get('.mb-1').click();
+    
+});
+ testcase for chnge password
+*/
+
+// // <reference types="cypress"/>
+// import 'cypress-xpath';
+// import Common from "../Common.js"; 
+// import newpassword from "../Page Object/POM_05_Passwordchange.js"; // Ensure correct case
+
+// Cypress.on('uncaught:exception', (err, runnable) => {
+//   if (err.message.includes("Cannot read properties of undefined (reading 'backdrop')")) {
+//       return false; 
+//   }
+// });
+
+// it("should log in using credentials from config and change password",{retries: 1},() => {
+//     const com = new Common();
+//     com.loginProcess();
+//     cy.wait(3000);
+//     cy.get('.col-md-6 > .mb-3').should("contain.text", "Neilsoft - Active Construction Sites");
+
+//     // Change password
+//     cy.get('.user > img').click();
+//     cy.get('#exampleModalLabel').should("contain.text", "Change Password");
+//     cy.wait(1000);
+//     cy.get('#oldpassword').type(`${Cypress.env("password")}{enter}`);
+
+//     // Generate and set a new password
+//     newpassword.setNewPassword();
+
+//     // Confirm password change
+//     cy.get('.mb-1').click({ force: true });
+//     cy.url().should('include', '/login');
+// });
+ another method :
+ 
+ 
+ /// <referance types="cypress"/>
+import 'cypress-xpath';
+import Common from "../Common"; 
+//import Login from"..//PageObject/loginpage.js";
+import newpassword from "../PageObject/changepassword.js";
+
+    it("should log in using credentials from config", () => {
+      try {
+         cy.visit("http://10.1.0.83/#/login"); // Base URL from env config
+        cy.viewport(1920, 1080);
+
+        const com = new Common();
+        com.loginProcess();
+        cy.wait(3000);
+
+      //changepassword
+      cy.get('.user > img').click();
+      cy.get('#exampleModalLabel').should("contain.text", "Change Password");
+      cy.get('#oldpassword').type(`${Cypress.env("Password")}{Enter}`);
+
+      cy.get('@lastGeneratedPassword').then((newPassword) => {
+        cy.log('New Password:', newPassword);
+    });
+    
+      cy.get('.mb-1').click();
+
+       cy.url().should('include', '/login');
+
+    });
+
+  
+
+page object model for chnge passwrd
+
+
+// class ChangePassword {
+//     generateUniquePassword() {
+//         const chars = "ABCDEFGHIJKLMNOPQRSTUVWXYZabcdefghijklmnopqrstuvwxyz0123456789@#$%^&*";
+//         let password = Array.from({ length: 12 }, () => chars[Math.floor(Math.random() * chars.length)]).join('');
+//         return password;
+//     }
+
+//     setNewPassword() {
+//         const newPassword = this.generateUniquePassword();
+//         cy.get('#newpassword').type(`${newPassword}{enter}`);
+//         cy.get('#reenterpassword').type(`${newPassword}{enter}`);
+//         cy.wrap(newPassword).as('lastGeneratedPassword'); // Store password for later use
+
+//         // Call the Cypress task to update the config file
+//         cy.task('updateConfig', { newPassword }).then((message) => {
+//             cy.log(message);
+//         });
+//     }
+// }
+
+// export default new ChangePassword();

@@ -1,0 +1,10 @@
+{
+  "suites": 1,
+  "tests": 1,
+  "passes": 0,
+  "pending": 0,
+  "failures": 1,
+  "start": "2025-02-25T09:06:09.123Z",
+  "duration": 14286,
+  "file": "cypress\\e2e\\Testcases\\Functional Test\\TC_08_Multiple users.cy.js"
+}

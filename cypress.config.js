@@ -43,10 +43,11 @@ module.exports = {
 
   reporter: 'cypress-mochawesome-reporter',
   reporterOptions: {
-    reportDir: 'cypress/reports',
+    reportDir: 'cypress/reports/Htmlreports',
     overwrite: false,
-    html: false,
-    json: true,
+    html: true,
+    json: false,
+    charts: true,
     timestamp: 'mmddyyyy_HHMMss'
   }
 };

@@ -7,7 +7,7 @@
     "test": "cypress run",
     "cy:parallel": "cypress-parallel -s test -t 4 -d cypress/e2e/Testcases",
     "merge-report": "mochawesome-merge cypress/reports/*.json > cypress/reports/report.json",
-    "generate-report": "marge cypress/reports/report.json --reportDir cypress/reports --reportTitle 'Test Report'"
+    "generate-report": "marge cypress/reports/report.html --reportDir cypress/reports --reportTitle 'Test Report'"
   },
   "author": "",
   "license": "ISC",
@@ -26,9 +26,10 @@
   },
   "reporter": "mochawesome",
   "reporterOptions": {
-    "reportDir": "cypress/reports",
+    "reportDir": "cypress/reports/Htmlreports",
     "overwrite": false,
-    "html": false,
-    "json": true
+    "html": true,
+    "json": false,
+    "charts": true
   }
 }

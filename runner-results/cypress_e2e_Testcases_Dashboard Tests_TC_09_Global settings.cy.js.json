@@ -1,0 +1,10 @@
+{
+  "suites": 1,
+  "tests": 1,
+  "passes": 1,
+  "pending": 0,
+  "failures": 0,
+  "start": "2025-02-25T09:05:32.995Z",
+  "duration": 12789,
+  "file": "cypress\\e2e\\Testcases\\Dashboard Tests\\TC_09_Global settings.cy.js"
+}
