@@ -1,5 +1,5 @@
 
-class Login {
+class Loginpage {
     clickAccept() {
         cy.get('#acceptBtn').click();
     }
@@ -21,4 +21,4 @@ class Login {
     }
 }
  
-export default Login; 
+export default Loginpage; 

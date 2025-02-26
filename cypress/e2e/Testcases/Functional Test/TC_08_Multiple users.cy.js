@@ -1,33 +1,4 @@
-// import 'cypress-xpath';
-// import MultipleUsers from '../../../support/Page Object/POM_08_Multipleusers.js';
-
-// describe("Read data from Excel file in Cypress", () => {
-//   it("should use Excel data to perform login tests", { retries: 0 }, () => {
-//     try {
-//        cy.readExcelFile("users01.xlsx").then((data) => {
-//       data.shift(); // Remove headers if present
-//       data.forEach(([Username, Password]) => {
-//         MultipleUsers.visit();
-//         MultipleUsers.enterEmail(Username);
-//         MultipleUsers.enterPassword(Password);
-//         cy.log("Entering OTP");
-//         cy.wait(2000);
-//         MultipleUsers.enterOTP();
-//         MultipleUsers.clickLoginButton();
-//         cy.log("Verifying successful login");
-//         MultipleUsers.verifySuccessfulLogin();
-//         Cypress.on('uncaught:exception', (err, runnable) => {
-//           return false;
-//         });
-//         MultipleUsers.logout();
-//       });
-//     });
-//   } catch (error) {
-//     cy.log('Unexpected error occurred:', error.message);
-// }
-//   });
-// });
-
+import 'cypress-xpath';
 describe("Read data from Excel file in Cypress", () => {
   it("should use Excel data to perform login tests",{retries: 0},() => {
       cy.readExcelFile("users01.xlsx").then((data) => {
@@ -37,18 +8,18 @@ describe("Read data from Excel file in Cypress", () => {
               cy.viewport(1920, 1080);
               cy.wait(3000);
               
-              cy.get('body').then(($body) => {
-                if ($body.find('#acceptBtn').length > 0) {  // Check if the button exists
-                    cy.get('#acceptBtn').should('be.visible').then(($el) => {
-                        cy.log("Button is visible");
-                        cy.get('#declineBtn').click();
-                    });
-                } else {
-                    cy.log("Button does not exist, skipping...");
-                }
-            });
+            //   cy.get('body').then(($body) => {
+            //     if ($body.find('#acceptBtn').length > 0) {  // Check if the button exists
+            //         cy.get('#acceptBtn').should('be.visible').then(($el) => {
+            //             cy.log("Button is visible");
+            //             cy.get('#declineBtn').click();
+            //         });
+            //     } else {
+            //         cy.log("Button does not exist, skipping...");
+            //     }
+            // });
             
-              cy.log("Accepting cookies");
+            //   cy.log("Accepting cookies");
         //cy.get('#acceptBtn').click(); // Handling cookies
  
 

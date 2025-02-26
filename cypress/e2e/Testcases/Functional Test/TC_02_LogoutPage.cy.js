@@ -1,4 +1,4 @@
-import LogoutPage from "../../../support/Page Object/POM_02_Logout.js";
+import LogoutPage from "../../../support/Page Object/LogoutPage.js";
 import Common from "../../../support/Common.js";
 
 describe("Logout Test Case", () => {

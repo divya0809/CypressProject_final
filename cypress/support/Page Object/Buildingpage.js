@@ -1,7 +1,7 @@
-class MonitorPage {
+class Buildingpage {
     // Define selectors as static properties
-    static firstCardContainer = ':nth-child(1) > .card-body > .container-fluid';
-    static addButton = '[data-bs-toggle="modal"] > .bi';
+    static firstCardContainer = ':nth-child(1) > .card-body';
+    static addButton = '.col-md-9 > .btn';
     static buildingNameInput = '#buildingName';
     static scheduleFromInput = '#scheduleForm';
     static scheduleToInput = '#scheduleTo';
@@ -50,4 +50,4 @@ class MonitorPage {
     }
 }
 
-export default MonitorPage;
+export default Buildingpage;

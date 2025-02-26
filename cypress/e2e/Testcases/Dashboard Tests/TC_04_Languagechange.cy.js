@@ -1,6 +1,6 @@
 import 'cypress-xpath';
 import Common from '../../../support/Common.js';
-import Languagechange from '../../../support/Page Object/POM_04_Languagechange.js';
+import Languagechange from '../../../support/Page Object/Languagechangepage.js';
 
 describe('Construct Monitor', () => {
     it('should validate the active sites header and change the language',{retries: 1},() => {

@@ -1,6 +1,6 @@
 import 'cypress-xpath';
 import Common from '../../../support/Common.js';
-import MonitorPage from '../../../support/Page Object/POM_07_Addbuilding.js';
+import Buildingpage from '../../../support/Page Object/Buildingpage.js';
 
 describe('Construct Monitor', () => {
     it('should perform the monitor actions',{retries: 1},() => {
@@ -10,17 +10,17 @@ describe('Construct Monitor', () => {
         cy.wait(3000);
 
         // Perform actions using MonitorPage methods
-        MonitorPage.clickFirstCardContainer();
-        MonitorPage.clickAddButton();
-        MonitorPage.enterBuildingName('Building 04');
+        Buildingpage.clickFirstCardContainer();
+        Buildingpage.clickAddButton();
+        Buildingpage.enterBuildingName('Building 04');
         cy.wait(3000);
-        MonitorPage.enterScheduleFromDate('2025-02-13');
-        MonitorPage.enterScheduleToDate('2025-03-23');
-        MonitorPage.selectRadioOption();
+        Buildingpage.scheduleFrom('2025-02-13');
+        Buildingpage.scheduleTo('2025-03-23');
+        Buildingpage.selectRadioOption();
         cy.wait(1000);
-        MonitorPage.enterBuildupArea(50);
+        Buildingpage.enterBuildupArea(50);
         cy.wait(1000);
-        MonitorPage.clickSubmitButton();
+        Buildingpage.clickSubmitButton();
     } catch (error) {
         cy.log('Unexpected error occurred:', error.message);
     }

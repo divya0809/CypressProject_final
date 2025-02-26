@@ -1,5 +1,5 @@
 import Common from '../../../support/Common.js';
-import MonitorPage from '../../../support/Page Object/POM_03_About.js'; 
+import AboutPage from '../../../support/Page Object/AboutPage.js'; 
 
 describe('Construct Monitor', () => {
     it('should validate the active sites header and navigate to the about page',{retries: 1},() => {
@@ -10,10 +10,10 @@ describe('Construct Monitor', () => {
         cy.wait(3000);
 
         // Validate the active sites header
-        MonitorPage.validateActiveSitesHeader();
+        AboutPage.validateActiveSitesHeader();
 
         // Navigate to the about page
-        MonitorPage.clickAboutPageImage();
+        AboutPage.clickAboutPageImage();
     } catch (error) {
         cy.log('Unexpected error occurred:', error.message);
     }

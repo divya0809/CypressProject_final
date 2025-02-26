@@ -1,4 +1,4 @@
-class MonitorPage {
+class AboutPage {
     // Static getters for selectors
     static get activeSitesHeader() {
         return '.col-md-6 > .mb-3';
@@ -10,14 +10,14 @@ class MonitorPage {
 
     // Method to validate the presence of the active sites header
     static validateActiveSitesHeader() {
-        cy.get(MonitorPage.activeSitesHeader).should('contain.text', 'Neilsoft - Active Construction Sites');
+        cy.get(AboutPage.activeSitesHeader).should('contain.text', 'Neilsoft - Active Construction Sites');
     }
 
     // Method to click on the about page image
     static clickAboutPageImage() {
-        cy.get(MonitorPage.aboutPageImage).click();
+        cy.get(AboutPage.aboutPageImage).click();
     }
 }
 
-export default MonitorPage;
+export default AboutPage;
 

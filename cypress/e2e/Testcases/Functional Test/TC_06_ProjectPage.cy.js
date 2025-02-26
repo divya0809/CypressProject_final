@@ -1,5 +1,5 @@
 import 'cypress-xpath';
-import ProjectPage from "../../../support/Page Object/POM_06_Addproject.js";
+import ProjectPage from "../../../support/Page Object/ProjectPage.js";
 import Common from "../../../support/Common.js"; 
 
 describe('Add Project Test', () => {
