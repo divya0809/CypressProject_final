@@ -1,5 +1,5 @@
 import LogoutPage from "../../../support/Page Object/LogoutPage.js";
-import Common from "../../../support/Common.js";
+import Common from "../../../support/Utility.js";
 
 describe("Logout Test Case", () => {
     it("should log out successfully",{retries: 1},() => {
@@ -13,7 +13,7 @@ describe("Logout Test Case", () => {
         
         logoutPage.clickLogoutButton();
         logoutPage.confirmLogout(); //logoutPage.verifyLogoutSuccess();
-        cy.wait(1000);
+        
        
     } catch (error) {
         cy.log('Unexpected error occurred:', error.message);

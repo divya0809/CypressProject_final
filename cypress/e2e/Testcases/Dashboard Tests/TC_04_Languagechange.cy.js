@@ -1,5 +1,5 @@
 import 'cypress-xpath';
-import Common from '../../../support/Common.js';
+import Common from '../../../support/Utility.js';
 import Languagechange from '../../../support/Page Object/Languagechangepage.js';
 
 describe('Construct Monitor', () => {

@@ -1,4 +1,4 @@
-import Common from '../../../support/Common.js';
+import Common from '../../../support/Utility.js';
 import AboutPage from '../../../support/Page Object/AboutPage.js'; 
 
 describe('Construct Monitor', () => {
@@ -7,7 +7,7 @@ describe('Construct Monitor', () => {
              const com = new Common();
 
         com.loginProcess();
-        cy.wait(3000);
+
 
         // Validate the active sites header
         AboutPage.validateActiveSitesHeader();
